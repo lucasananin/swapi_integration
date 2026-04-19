@@ -1,0 +1,78 @@
+<%# <h1>Favorites#index</h1> %>
+<title><%= content_for :title, "Swapi Integration/Favorites" %></title>
+
+<%= render "shared/navbar" %>
+
+<h1>Favorites</h1>
+
+<div style="margin-bottom: 20px;">
+
+  <%= form_with url: favorites_path,
+      method: :get,
+      local: true do %>
+
+    <label>Resource:</label>
+
+    <%= select_tag :resource,
+
+      options_for_select(
+        [
+          ["All", ""],
+          ["People", "people"],
+          ["Planets", "planets"],
+          ["Films", "films"],
+          ["Starships", "starships"],
+          ["Vehicles", "vehicles"],
+          ["Species", "species"]
+        ],
+        params[:resource]
+      ) %>
+
+    <label>Sort by:</label>
+
+    <%= select_tag :sort,
+
+      options_for_select(
+        [
+          ["Name", "name"],
+          ["Date added", "created_at"],
+        ],
+        params[:sort]
+      ) %>
+
+    <label>Direction:</label>
+
+    <%= select_tag :direction,
+
+      options_for_select(
+        [
+          ["Oldest first", "asc"],
+          ["Newest first", "desc"],
+        ],
+        params[:direction]
+      ) %>
+
+    <%= submit_tag "Apply",
+        class: "button button-primary" %>
+
+  <% end %>
+
+</div>
+
+<% @favorites.each do |favorite| %>
+
+    <div class="card">
+      <%= link_to favorite.name,
+        resource_show_path(
+          favorite.resource,
+          favorite.person_id
+        ) %>
+
+      <small>
+        (<%= favorite.resource %>)
+      </small>
+    </div>
+
+<% end %>
+
+<%= render "shared/footer" %>

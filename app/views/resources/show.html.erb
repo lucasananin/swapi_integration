@@ -1,0 +1,49 @@
+<%# <h1>Resources#show</h1> %>
+<title><%= content_for :title, "Swapi Integration/Resources/Show" %></title>
+
+<%= render "shared/navbar" %>
+
+<h1><%= @item["name"] || @item["title"] %></h1>
+
+<div class="card">
+  <ul>
+    <% @item.each do |key, value| %>
+
+      <li>
+        <strong>
+          <%= key.humanize %>:
+        </strong>
+        <%= value %>
+      </li>
+
+    <% end %>
+  </ul>
+</div>
+
+<br>
+<% id = params[:id] %>
+<% if favorite?(@resource, id) %>
+
+  <%= button_to "★ Remove from Favorites",
+      toggle_favorites_path,
+      method: :post,
+      params: {
+        resource: @resource,
+        external_id: id,
+        name: @item["name"] || @item["title"]
+      }, class: "button-danger" %>
+
+<% else %>
+
+  <%= button_to "☆ Add to Favorites",
+      toggle_favorites_path,
+      method: :post,
+      params: {
+        resource: @resource,
+        external_id: id,
+        name: @item["name"] || @item["title"]
+      }, class: "button-primary" %>
+
+<% end %>
+
+<%= render "shared/footer" %>

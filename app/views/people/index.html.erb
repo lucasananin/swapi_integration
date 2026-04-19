@@ -1,0 +1,44 @@
+<h1>Star Wars Characters</h1>
+
+<ul>
+    <% @people.each do |person| %>
+        <% id = person["url"].split("/").last(1).first %>
+        <li>
+            <%= link_to person["name"], person_path(id) %>
+        </li>
+    <% end %>
+</ul>
+
+<hr>
+
+<div style="margin-top: 20px;">
+    <% if @current_page > 1 %>
+        <%= link_to "Previous", people_path(page: @current_page - 1) %>
+    <% end %>
+
+    <% if @start_page > 1 %>
+        <%= link_to 1, people_path(page: 1) %>
+        ...
+    <% end %>
+
+    <% (@start_page..@end_page).each do |page| %>
+        <% if page == @current_page %>
+            <strong style="margin: 0 5px;"><%= page %></strong>
+        <% else %>
+            <%= link_to page, people_path(page: page), style: "margin: 0 5px;" %>
+        <% end %>
+    <% end %>
+
+    <% if @end_page < @total_pages %>
+        ...
+        <%= link_to @total_pages, people_path(page: @total_pages) %>
+    <% end %>
+    
+    <% if @current_page  < @total_pages%>
+        <%= link_to "Next", people_path(page: @current_page + 1) %>
+    <% end %>
+</div>
+
+<div>
+    <%= link_to "Favorites", favorites_path %>
+</div>

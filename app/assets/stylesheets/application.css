@@ -1,0 +1,149 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* Layout */
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    background-image: url("header_wide.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header image {
+    border-image-repeat: round;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+body {
+    font-family: system-ui, Arial, sans-serif;
+    background: #0b0f1a;
+    color: #ffffff;
+    margin: 0;
+}
+
+footer {
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+    /* position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center; */
+}
+
+footer a {
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Navbar */
+
+.navbar {
+    background: #111827;
+    padding: 15px 20px;
+}
+
+.navbar a {
+    color: #e5e7eb;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #facc15;
+}
+
+/* Cards */
+
+.card {
+    background: #1f2937;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+
+.button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.button-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.button-favorite {
+    background: #facc15;
+    color: black;
+}
+
+/* Pagination */
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination a {
+    margin-right: 6px;
+    padding: 6px 10px;
+    background: #374151;
+    border-radius: 6px;
+    text-decoration: none;
+    color: white;
+}
+
+.pagination .current {
+    background: #facc15;
+    color: black;
+}

@@ -1,0 +1,20 @@
+<header>
+    <h1>
+        <%= link_to "SWAPI Integration", root_path %>
+    </h1>
+</header>
+
+<body>
+
+    <div class="navbar">
+        <%= link_to "People", resource_index_path("people") %>
+        <%= link_to "Planets", resource_index_path("planets") %>
+        <%= link_to "Films", resource_index_path("films") %>
+        <%= link_to "Starships", resource_index_path("starships") %>
+        <%= link_to "Vehicles", resource_index_path("vehicles") %>
+        <%= link_to "Species", resource_index_path("species") %>
+
+        <%= link_to "Favorites", favorites_path %>
+    </div>
+
+</body>

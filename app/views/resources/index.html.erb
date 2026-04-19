@@ -1,0 +1,54 @@
+<%# <h1>Resources#index</h1> %>
+<title><%= content_for :title, "Swapi Integration/Resources" %></title>
+
+<%= render "shared/navbar" %>
+
+<h1><%= @resource.capitalize %></h1>
+
+<% @items.each do |item| %>
+  <div class="card">
+    <div>
+        <% id = item["url"].split("/").last(1).first %>
+        <%= link_to item["name"] || item["title"], resource_show_path(@resource, id) %>
+    </div>
+
+    <div>
+      <% if favorite?(@resource, id) %>
+
+        <%= button_to "★",
+            toggle_favorites_path,
+            method: :post,
+            params: {
+              resource: @resource,
+              external_id: id,
+              name: item["name"] || item["title"]
+            },
+            class: "button button-favorite" %>
+
+      <% else %>
+
+        <%= button_to "☆",
+            toggle_favorites_path,
+            method: :post,
+            params: {
+              resource: @resource,
+              external_id: id,
+              name: item["name"] || item["title"]
+            },
+            class: "button button-primary" %>
+
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <%= render "shared/pagination",
+      resource: @resource,
+      current_page: @current_page,
+      start_page: @start_page,
+      end_page: @end_page,
+      total_pages: @total_pages %>
+</div>
+
+<%= render "shared/footer" %>
