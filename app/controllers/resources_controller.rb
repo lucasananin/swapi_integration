@@ -7,18 +7,10 @@ class ResourcesController < ApplicationController
     @search = params[:search]
 
     data = SwapiClient.get_resource(@resource, @current_page)
-    @items = data["results"]
-
-    # if @search.present?
-    #   query = @search.downcase
-    #   @items = @items.select do |item|
-    #     name = item["name"] ||item["title"]
-    #     name.to_s.downcase.include?(query)
-    #   end
-    # end
-
-    @count = data["count"]
+    @items = data
+    @count = data.length
     @total_pages = (@count / 10.0).ceil
+
     window = pagination_window(@current_page, @total_pages)
     @start_page = window[:start_page]
     @end_page = window[:end_page]

@@ -2,7 +2,7 @@ require "faraday"
 require "json"
 
 class SwapiClient
-  BASE_URL = "https://swapi.dev/api"
+  BASE_URL = "https://swapi.info/api"
 
   def self.get_resource(resource, page)
     response = Faraday.get("#{BASE_URL}/#{resource}", { page: page })
